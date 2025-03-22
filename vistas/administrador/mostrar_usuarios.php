@@ -95,8 +95,8 @@
                 <!-- BEGIN page tittle -->
                 <div class="page-title">
                     <div>
-                        <h1><i class="fa fa-file-o"></i> Tesis en el sistema</h1>
-                        <h4>Listado de tesis registradas en el sistema</h4>
+                        <h1><i class="fa fa-file-o"></i> Usuarios registrados en el sistema</h1>
+                        <h4>Listado de usuarios registrados en el sistema</h4>
                     </div>
                 </div>
                 <!-- END page tittle -->
@@ -110,7 +110,7 @@
                             <span class="divider"> <i class="fa fa-angle-right"></i></span>
                         </li>
                         <li class="active">
-                            <a href="#">Mostrar tesis</a>
+                            <a href="#">Mostrar usuarios</a>
                         </li>
                     </ul>
                 </div>
@@ -121,7 +121,7 @@
                     <div class="col-md-12">
                         <div class="box">
                             <div class="box-title">
-                                <h3><i class="fa fa-table"></i> Listado de tesis registradas en el sistema</h3>
+                                <h3><i class="fa fa-table"></i> Listado de usuarios registrados en el sistema</h3>
                                 <div class="box-tool">
                                     <a data-action="collapse" href="#"><i class="fa fa-chevron-up"></i></a>
                                     <a data-action="close" href="#"><i class="fa fa-times"></i></a>
@@ -131,7 +131,7 @@
                                 <div class="btn-toolbar pull-right clearfix">
                                     
                                     <div class="btn-group">
-                                        <a href="adicionar_tesis.php" class="btn btn-circle show-tooltip" title="Adicionar tesis"><i class="fa fa-plus"></i></a>
+                                        <a href="adicionar_usuario.php" class="btn btn-circle show-tooltip" title="Adicionar usuario"><i class="fa fa-plus"></i></a>
                                         <a href="#" class="btn btn-circle show-tooltip" title="Imprimir seleccionados"><i class="fa fa-print"></i></a>
                                         <a href="#" class="btn btn-circle show-tooltip" title="Exportar a PDF"><i class="fa fa-file-text-o"></i></a>
                                     </div>
@@ -150,16 +150,15 @@
                                     
 
 
-                                    <table class="table table-advance" id="table1">
+                                    <table class="table table-advance" id="tabla_usuarios">
                                         <thead>
                                             <tr>
                                                 <th style="width:18px"><input type="checkbox" /></th>
                                                 <th style="width:50px">#</th>
-                                                <th>Título</th>
-                                                <th>Autor(es)</th>
-                                                <th>Tutor</th>
-                                                <th>Cotutor</th>
-                                                <th>Tipo de trabajo</th>
+                                                <th>Nombre y apellidos</th>
+                                                <th>nombre de usuario</th>
+                                                <th>Categoría científica</th>
+                                                <th>Grado militar</th>
                                                 <th style="width:120px">Acciones</th>
                                             </tr>
                                         </thead>
@@ -168,7 +167,7 @@
                                             require_once '../../modelo/modelo.php';
 
                                             $mod=new Modelo();
-                                            $registros=$mod->mostrarTodasTesis();
+                                            $registros=$mod->obtenerUsuarios();
 
                                             
                                             if($registros->num_rows>0){

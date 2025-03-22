@@ -1,2 +1,2 @@
 <?php
-include "vistas/publica/index.php";
+include "vistas/login.php";

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Form Validation - FLATY Admin</title>
+        <title>Adicionar usuario - Tesis ISMI</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -129,12 +129,7 @@
                                 </div>
                             </div>
                             <div class="box-content">
-                                <form action="/controladores/guardar_tesis.php" class="form-horizontal" id="adicionar_tesis" method="post" onsubmit="validarGuardarTesis()">
-                                    <?php
-                                    include "../../modelo/modelo.php";
-                                    $mod=new Modelo();
-
-                                    ?>
+                                <form action="../../controladores/guardar_usuario.php" class="form-horizontal" id="adicionar_usuario" method="post" onsubmit="agregarUsuario()">
                                     <div class="form-group">
                                         <label class="col-sm-3 col-lg-2 control-label" for="username">Título<span style="color: orange;">*</span></label>
                                         <div class="col-sm-6 col-lg-4 controls">
@@ -143,16 +138,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-sm-3 col-lg-2 control-label" for="autor">Autor(es)<span style="color: orange;">*</span></label>
+                                        <label class="col-sm-3 col-lg-2 control-label" for="autor">Autor<span style="color: orange;">*</span></label>
                                         <div class="col-sm-6 col-lg-4 controls">
-                                            <select name="autores[]" id="autor" class="form-control" multiple>
-                                                
-                                                <?php $res = $mod->obtenerNombresPersonas();
-                                                foreach ($res as $data) { ?>
-                                                <option value="<?php echo $data['id'] ?>"><?php echo $data['nombre_apellidos'] ?></option>
-
-                                                <?php } ?>
-                                            </select>
+                                            <input type="text" name="autor" id="autor" class="form-control" data-rule-required="true" data-rule-minlength="3" required/>
                                         </div>
                                     </div>
 
@@ -171,16 +159,26 @@
                                     </div> -->
 
                                     <div class="form-group">
-                                        <label class="col-sm-3 col-lg-2 control-label" for="tutor">Tutor(es)<span style="color: orange;">*</span></label>
+                                        <label class="col-sm-3 col-lg-2 control-label" for="tutor">Tutor<span style="color: orange;">*</span></label>
                                         <div class="col-sm-6 col-lg-4 controls">
-                                            <select name="tutores[]" id="tutor" class="form-control" multiple>
-                                                <?php $res = $mod->obtenerNombresPersonas();
-                                                foreach ($res as $data) { ?>
-                                                <option value="<?php echo $data['id'] ?>"><?php echo $data['nombre_apellidos'] ?></option>
-
-                                                <?php } ?>
+                                            <select name="tutor" id="tutor" class="form-control">
+                                                <option value="">Seleccione un tutor</option>
+                                                <option value="1">Yasser Lafferte</option>
+                                                <option value="2">Ernesto Guerra</option>
+                                                <option value="3">Yuliet Torres</option>
                                             </select>
                                         </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 col-lg-2 control-label" for="cotutor">Cotutor</label>
+                                        <div class="col-sm-6 col-lg-4 controls">
+                                            <select name="cotutor" id="cotutor" class="form-control">
+                                                <option value="">Seleccione el cotutor</option>
+                                                <option value="1">Yasser Lafferte</option>
+                                                <option value="2">Ernesto Guerra</option>
+                                                <option value="3">Yuliet Torres</option>
+                                            </select>
                                     </div>
 
                                     <hr>
@@ -189,19 +187,16 @@
                                         <label for="tipo-trabajo" class="col-sm-3 col-lg-2 control-label">Tipo de trabajo<span style="color: orange;">*</span></label>
                                         <div class="col-sm-6 col-lg-4 controls">
                                             <select class="form-control" name="tipo-trabajo" id="tipo-trabajo" data-rule-required="true">
-                                                <option value="">Seleccione el tipo de trabajo</option>
-                                                <?php $res = $mod->obtenerTiposTrabajo();
-                                                foreach ($res as $data) { ?>
-                                                <option value="<?php echo $data['id'] ?>"><?php echo $data['tipo_trab'] ?></option>
-
-                                                <?php } ?>
+                                                <option value="">Seleccione</option>
+                                                <option value="1">Investigativo</option>
+                                                <option value="2">Desarrollo</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
-                                            <input type="submit" class="btn btn-primary" value="guardar">
+                                            <input type="submit" class="btn btn-primary" value="Guardar" onclick="agregarFila(event)">
                                             <button type="button" class="btn">Cancelar</button>
                                         </div>
                                     </div>
@@ -238,7 +233,7 @@
         <!--flaty scripts-->
         <script src="/js/flaty.js"></script>
         <script src="/js/flaty-demo-codes.js"></script>
-        <script src="../../js/validaciones.js"></script>
-
+        <script src="/js/adicionar_tesis.js"></script>
+        <script> src="/js/validaciones.js"</script>
     </body>
 </html>
